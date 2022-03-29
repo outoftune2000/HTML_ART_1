@@ -15,8 +15,11 @@
             
             context.lineWidth = 4;
             context.beginPath();
-            context.arc(100,100,100,0,Math.PI*2);
+            context.arc(200,200,100,0,Math.PI*2);
+            //arc function is used to draw a circle in canvas
             context.stroke();
+            context.fillStyle = 'red' ; //fillstyle is used to specify the fill colour and fill type
+            context.fill();// fill is used to fill the given shape with the color specified by the fillstyle statement above it
 
 
 
