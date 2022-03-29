@@ -21,6 +21,32 @@
             context.fillStyle = 'red' ; //fillstyle is used to specify the fill colour and fill type
             context.fill();// fill is used to fill the given shape with the color specified by the fillstyle statement above it
 
+            for(let i=0 ; i<5;i++){
+                context.lineWidth = 3;
+                context.beginPath();
+                context.arc(100+(i*50),100+(i*50),25,0,Math.PI*2);
+                context.stroke();
+                console.log(i);
+            }
+
+            //making a golden spiral
+            for(let i=0;i<5;i++){
+                //r=a*e^(b*angle)
+                let a = 10;
+                for(let th = 0 ; th<360;th++){
+                    let b = th*3;
+                    let t =  th*(Math.PI/180);
+                    let c = b*t;
+
+                    let r = a*Math.pow(Math.exp,c);
+                    console.log(c);
+                    context.beginPath();
+                    context.arc(r+100,r+100,r*2,0,Math.PI*2);
+                    context.stroke();
+                }                
+                 
+            }
+
 
 
 
