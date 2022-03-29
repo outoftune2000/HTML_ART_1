@@ -1,6 +1,6 @@
 <html>
     <body>
-        <canvas width="800" height="800"></canvas>
+        <canvas width="2000" height="2000"></canvas>
         <script>
             let canvas = document.querySelector('canvas');
             let context = canvas.getContext('2d');
@@ -30,22 +30,24 @@
             }
 
             //making a golden spiral
-            for(let i=0;i<5;i++){
+
                 //r=a*e^(b*angle)
-                let a = 10;
+            for(let i=0;i<4;i++){    
+                let a =5+i;
                 for(let th = 0 ; th<360;th++){
-                    let b = th*3;
+                    let b = 10+i;
                     let t =  th*(Math.PI/180);
                     let c = b*t;
 
-                    let r = a*Math.pow(Math.exp,c);
-                    console.log(c);
+                    let r = a*(Math.pow(Math.E,c));
+                    console.log(r);
+                    rn=r/Math.pow(Math.E,58);
                     context.beginPath();
-                    context.arc(r+100,r+100,r*2,0,Math.PI*2);
+                    context.arc(rn+i,rn+i,rn,0,Math.PI*2);
                     context.stroke();
                 }                
-                 
-            }
+           }
+            
 
 
 
