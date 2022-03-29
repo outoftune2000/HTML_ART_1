@@ -6,16 +6,19 @@
             let context = canvas.getContext('2d');
             context.fillStyle = 'blue';
            // context.fillRect(100,100,400,400);
-
-            context.lineWidth = 4;
-            context.beginPath();
-            context.rect(100,100,200,200);
-            context.stroke();
+          // drawing a rectangle has 3 main steps
+            context.lineWidth = 4; //this is an optional step which involves the width of the stroke of the drawn line
+            context.beginPath(); //The first step in drawing any line is to begin the path
+            context.rect(100,100,200,200); // the drawing function which requires a number of attributes
+            //rect function takes 4 parameters 1)x co-ordinate 2) y co-ordinate 3)length 4)height 
+            context.stroke(); // and the stroke command that initiates the drawing process
             
             context.lineWidth = 4;
             context.beginPath();
             context.arc(100,100,100,0,Math.PI*2);
             context.stroke();
+
+
 
 
 
