@@ -79,10 +79,12 @@
                context.strokeStyle='white';
                for(let th=0;th<360*3;th++){
                     t=th*(Math.PI/180);
-                    let r = a+b*t;
+                    let r = a+b*t;// no need to include the value 1/c as a normal archimidian spiral has the value of c=1
+                    //let c=1;
+                    //let r = a+b*Math.pow(t,(1/c)); //just in case I want to explore this route in the future
                     context.beginPath();
-                    context.arc(200,200,r,s,t);
-                    s=t;
+                    context.arc(200,200,r,s,t);//center of the spiral is at 200,200 
+                    s=t;// s is used to store the maximum value of the previous state and use it as the lower bound parameter for drawing the spiral
                     context.stroke();
                     
                }
