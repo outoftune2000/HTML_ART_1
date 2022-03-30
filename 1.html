@@ -71,28 +71,35 @@
                      
                 }                
            }*/
+           function archimedean(a,b,turns,off_x,off_y){
            for(let i=0;i<5;i++){
-               //r=a+b.theta^(1/c) for normal  archimidian spirals c=1 (https://en.wikipedia.org/wiki/Archimedean_spiral#Arc_length_and_curvature)
-               let a = 1;
-               let b=10;
-               let s=0;
+               //r=a+b.theta^(1/c) for normal  archimedean spirals c=1 (https://en.wikipedia.org/wiki/Archimedean_spiral#Arc_length_and_curvature)
+               let s = 0;
                context.strokeStyle='white';
-               for(let th=0;th<360*3;th++){
+               for(let th=0;th<360*turns;th++){
                     t=th*(Math.PI/180);
-                    let r = a+b*t;// no need to include the value 1/c as a normal archimidian spiral has the value of c=1
+                    let r = a+b*t;// no need to include the value 1/c as a normal archimedean spiral has the value of c=1
                     //let c=1;
                     //let r = a+b*Math.pow(t,(1/c)); //just in case I want to explore this route in the future
                     context.beginPath();
-                    context.arc(200,200,r,s,t);//center of the spiral is at 200,200 
+                    context.arc(100+off_x,100+off_y,r,s,t);//center of the spiral is at 200,200 
                     s=t;// s is used to store the maximum value of the previous state and use it as the lower bound parameter for drawing the spiral
-                    context.stroke();
-                    
+                    if(th%2==0){
+                        context.strokeStyle='black';
+                        context.stroke();
+                    }
+                    else{
+                        context.strokeStyle='white';
+                        context.stroke();
+                    }   
                }
 
            }
-            
-
-
+           }//defined archimedean spiral as a function 
+           
+        for(let n = 100;n<200;n=n+10){
+           archimedean(1,10,4,n,n);// parameters are (a,b,turns,offset along x axis, offset along y axis)
+        }
 
 
 
