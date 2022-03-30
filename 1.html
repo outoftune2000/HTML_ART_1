@@ -4,48 +4,89 @@
         <script>
             let canvas = document.querySelector('canvas');
             let context = canvas.getContext('2d');
-            context.fillStyle = 'blue';
+            let con3d = canvas.getContext('webgl');
+            context.fillStyle = 'black';
+            context.beginPath();
+            context.rect(0,0,2000,2000);
+            context.fill();
+        
            // context.fillRect(100,100,400,400);
           // drawing a rectangle has 3 main steps
-            context.lineWidth = 4; //this is an optional step which involves the width of the stroke of the drawn line
-            context.beginPath(); //The first step in drawing any line is to begin the path
-            context.rect(100,100,200,200); // the drawing function which requires a number of attributes
+            //context.lineWidth = 4; //this is an optional step which involves the width of the stroke of the drawn line
+            //context.beginPath(); //The first step in drawing any line is to begin the path
+            //context.rect(100,100,200,200); // the drawing function which requires a number of attributes
             //rect function takes 4 parameters 1)x co-ordinate 2) y co-ordinate 3)length 4)height 
-            context.stroke(); // and the stroke command that initiates the drawing process
+            //context.stroke(); // and the stroke command that initiates the drawing process
             
-            context.lineWidth = 4;
-            context.beginPath();
-            context.arc(200,200,100,0,Math.PI*2);
+            //context.lineWidth = 4;
+            //context.beginPath();
+            //context.arc(200,200,100,0,Math.PI*2);
             //arc function is used to draw a circle in canvas
-            context.stroke();
-            context.fillStyle = 'red' ; //fillstyle is used to specify the fill colour and fill type
-            context.fill();// fill is used to fill the given shape with the color specified by the fillstyle statement above it
+            //context.stroke();
+            //context.fillStyle = 'red' ; //fillstyle is used to specify the fill colour and fill type
+            //context.fill();// fill is used to fill the given shape with the color specified by the fillstyle statement above it
 
-            for(let i=0 ; i<5;i++){
-                context.lineWidth = 3;
-                context.beginPath();
-                context.arc(100+(i*50),100+(i*50),25,0,Math.PI*2);
-                context.stroke();
-                console.log(i);
-            }
+            //for(let i=0 ; i<5;i++){
+            //    context.lineWidth = 3;
+            //    context.beginPath();
+            //    context.arc(100+(i*50),100+(i*50),25,0,Math.PI*2);
+            //    context.stroke();
+            //    console.log(i);
+            //}
 
             //making a golden spiral
 
                 //r=a*e^(b*angle)
-            for(let i=0;i<4;i++){    
+           /* let x = ['red','blue'];
+            for(let i=0;i<1;i++){    
                 let a =5+i;
-                for(let th = 0 ; th<360;th++){
-                    let b = 10+i;
+                for(let th = 0 ; th<(360*3);th++){
+                    let b = 4;
+                    let gap = 20;
                     let t =  th*(Math.PI/180);
                     let c = b*t;
-
+                    context.lineWidth=2;
+                    console.log(x[i]);
+                    
+                   if(th%2==0){  
+                    context.strokeStyle='red';
                     let r = a*(Math.pow(Math.E,c));
-                    console.log(r);
-                    rn=r/Math.pow(Math.E,58);
+                    rn=r/Math.pow(Math.E,60);
                     context.beginPath();
-                    context.arc(rn+i,rn+i,rn,0,Math.PI*2);
+                    context.arc(rn+gap+i,rn+gap+i,rn,0,Math.PI*2);
+                    context.stroke(); 
+                   }
+                   else{
+                    context.strokeStyle='blue';
+                    let r = a*(Math.pow(Math.E,c));
+                    console.log(Math.max(r));
+                    rn=r/Math.pow(Math.E,60);
+                    context.beginPath();
+                    context.arc(rn+gap+i,rn+gap+i,rn,0,Math.PI*2);
                     context.stroke();
+
+                   }
+                    
+                    
+                     
                 }                
+           }*/
+           for(let i=0;i<5;i++){
+               //r=a+b.theta^(1/c) for normal  archimidian spirals c=1 (https://en.wikipedia.org/wiki/Archimedean_spiral#Arc_length_and_curvature)
+               let a = 1;
+               let b=10;
+               let s=0;
+               context.strokeStyle='white';
+               for(let th=0;th<360*3;th++){
+                    t=th*(Math.PI/180);
+                    let r = a+b*t;
+                    context.beginPath();
+                    context.arc(200,200,r,s,t);
+                    s=t;
+                    context.stroke();
+                    
+               }
+
            }
             
 
