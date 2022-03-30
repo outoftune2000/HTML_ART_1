@@ -88,11 +88,12 @@
             
             //golden_spiral(i,i/10,2,100,100);
         }
-        var d = new Date();
-        let s2=d.getSeconds();
+        var d = new Date();//used to obtain the date,time and timezone of the system
+        let s2=d.getSeconds();//used to get the seconds in the current time
         console.log(s2);
         for(let n = 1;n<20;n++){
             archimedean(1,s2,4,n*100,n*100);// parameters are (a,b,turns,offset along x axis, offset along y axis)
+            //s2 changes every second and shows the corresponding value of seconds in the current time that is 0-59
         }
 
         </script>
