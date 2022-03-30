@@ -71,14 +71,14 @@
                      
                 }                
            }*/
-           function archimidian(a,b,turns,off_x,off_y){
+           function archimedean(a,b,turns,off_x,off_y){
            for(let i=0;i<5;i++){
-               //r=a+b.theta^(1/c) for normal  archimidian spirals c=1 (https://en.wikipedia.org/wiki/Archimedean_spiral#Arc_length_and_curvature)
+               //r=a+b.theta^(1/c) for normal  archimedean spirals c=1 (https://en.wikipedia.org/wiki/Archimedean_spiral#Arc_length_and_curvature)
                let s = 0;
                context.strokeStyle='white';
                for(let th=0;th<360*turns;th++){
                     t=th*(Math.PI/180);
-                    let r = a+b*t;// no need to include the value 1/c as a normal archimidian spiral has the value of c=1
+                    let r = a+b*t;// no need to include the value 1/c as a normal archimedean spiral has the value of c=1
                     //let c=1;
                     //let r = a+b*Math.pow(t,(1/c)); //just in case I want to explore this route in the future
                     context.beginPath();
@@ -95,10 +95,10 @@
                }
 
            }
-           }//defined archemidean spiral as a function 
+           }//defined archimedean spiral as a function 
            
         for(let n = 100;n<200;n=n+10){
-           archimidian(1,10,4,n,n);// parameters are (a,b,turns,offset along x axis, offset along y axis)
+           archimedean(1,10,4,n,n);// parameters are (a,b,turns,offset along x axis, offset along y axis)
         }
 
 
