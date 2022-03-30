@@ -1,13 +1,13 @@
 <html>
     <body>
-        <canvas width="2000" height="2000"></canvas>
+        <canvas width="5000" height="5000"></canvas>
         <script>
             let canvas = document.querySelector('canvas');
             let context = canvas.getContext('2d');
             let con3d = canvas.getContext('webgl');
             context.fillStyle = 'black';
             context.beginPath();
-            context.rect(0,0,2000,2000);
+            context.rect(0,0,5000,5000);
             context.fill();
         
            // context.fillRect(100,100,400,400);
@@ -37,40 +37,22 @@
             //making a golden spiral
 
                 //r=a*e^(b*angle)
-           /* let x = ['red','blue'];
-            for(let i=0;i<1;i++){    
-                let a =5+i;
-                for(let th = 0 ; th<(360*3);th++){
-                    let b = 4;
-                    let gap = 20;
-                    let t =  th*(Math.PI/180);
-                    let c = b*t;
-                    context.lineWidth=2;
-                    console.log(x[i]);
-                    
-                   if(th%2==0){  
-                    context.strokeStyle='red';
-                    let r = a*(Math.pow(Math.E,c));
-                    rn=r/Math.pow(Math.E,60);
-                    context.beginPath();
-                    context.arc(rn+gap+i,rn+gap+i,rn,0,Math.PI*2);
-                    context.stroke(); 
-                   }
-                   else{
-                    context.strokeStyle='blue';
-                    let r = a*(Math.pow(Math.E,c));
-                    console.log(Math.max(r));
-                    rn=r/Math.pow(Math.E,60);
-                    context.beginPath();
-                    context.arc(rn+gap+i,rn+gap+i,rn,0,Math.PI*2);
-                    context.stroke();
+          function golden_spiral(a,b,turns,off_x,off_y){ 
+            let s = 0;
+            context.strokeStyle='white';
+            for(let i = 0;i<360*turns;i++){
+                th = i*(Math.PI/180);
+                r=a*Math.pow(Math.E,(b*th));
+                
+                
+                context.beginPath();
+                context.arc(10+off_x,10+off_y,r,s+10,th);
+                console.log(th);
+                s=th;
+                context.stroke();
 
-                   }
-                    
-                    
-                     
-                }                
-           }*/
+            }
+          }
            function archimedean(a,b,turns,off_x,off_y){
            for(let i=0;i<5;i++){
                //r=a+b.theta^(1/c) for normal  archimedean spirals c=1 (https://en.wikipedia.org/wiki/Archimedean_spiral#Arc_length_and_curvature)
@@ -98,10 +80,12 @@
            }//defined archimedean spiral as a function 
            
         for(let n = 100;n<200;n=n+10){
-           archimedean(1,10,4,n,n);// parameters are (a,b,turns,offset along x axis, offset along y axis)
+          // archimedean(1,10,4,n,n);// parameters are (a,b,turns,offset along x axis, offset along y axis)
         }
-
-
+        for(i = 0;i<10;i++){
+            
+            golden_spiral(i,i/10,2,100,100);
+        }
 
 
         </script>
