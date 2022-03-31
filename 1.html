@@ -1,6 +1,6 @@
 <html>
     <head>
-        <meta http-equiv="refresh" content="1">
+        <meta http-equiv="refresh" content="0.5">
     </head>
     <body>
         <canvas width="5000" height="5000"></canvas>
@@ -64,19 +64,24 @@
                context.strokeStyle='black';
                for(let th=0;th<360*turns;th++){
                     t=th*(Math.PI/180);
-                    let r = a+b*t;// no need to include the value 1/c as a normal archimedean spiral has the value of c=1
-                    //let c=1;
-                    //let r = a+b*Math.pow(t,(1/c)); //just in case I want to explore this route in the future
+                    //let r = a+b*t;// no need to include the value 1/c as a normal archimedean spiral has the value of c=1
+                    let c=0.5;
+                    let r = a+b*Math.pow(t,(1/c)); //just in case I want to explore this route in the future
                     context.beginPath();
                     context.arc(100+off_x,100+off_y,r,s,t);//center of the spiral is at 200,200 
+                    context.lineWidth=3;
                     s=t;// s is used to store the maximum value of the previous state and use it as the lower bound parameter for drawing the spiral
                     if(th%2==0){
                         context.strokeStyle='red';
                         context.stroke();
+                        context.fillStyle='red';
+                        context.fill();
                     }
                     else{
                         context.strokeStyle='yellow';
                         context.stroke();
+                        context.fillStyle='blue';
+                        context.fill();
                     }   
                }
 
@@ -91,10 +96,11 @@
         var d = new Date();//used to obtain the date,time and timezone of the system
         let s2=d.getSeconds();//used to get the seconds in the current time
         console.log(s2);
-        for(let n = 1;n<20;n++){
-            archimedean(1,s2,4,n*100,n*100);// parameters are (a,b,turns,offset along x axis, offset along y axis)
+        let n=1;
+        //for(let n = 1;n<20;n++){
+            archimedean(1,s2,4,500,500);// parameters are (a,b,turns,offset along x axis, offset along y axis)
             //s2 changes every second and shows the corresponding value of seconds in the current time that is 0-59
-        }
+        //}
 
         </script>
     </body>
